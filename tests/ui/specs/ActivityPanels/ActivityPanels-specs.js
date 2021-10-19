@@ -160,18 +160,6 @@ describe('ActivityPanels', function () {
 
 		describe('pointer', function () {
 			// The ESC button (Back Key) does _not_ unset the pointer mode and does _not_ focus [ENYO-5865] [ENYO-5882]
-			it('should Not spot last focused item when transitioning back', function () {
-				Page.waitTransitionEnd(5000, undefined, () => {
-					Page.item2.click();
-				}, []);
-				Page.waitTransitionEnd(5000, undefined, () => {
-					Page.backKey();
-				}, []);
-
-				expect(Page.item2.isFocused()).to.be.false();
-			});
-
-			// The ESC button (Back Key) does _not_ unset the pointer mode and does _not_ focus [ENYO-5865] [ENYO-5882]
 			it('should Not spot last focused item when transitioning back after moving pointer', function () {
 				Page.waitTransitionEnd(5000, undefined, () => {
 					Page.item2.click();
@@ -390,8 +378,7 @@ describe('ActivityPanels', function () {
 				}, []);
 
 				expect(Page.body.isFocused(), 'body focus').to.be.true();
-				Page.spotlightDown();
-				expect(Page.breadcrumb.isFocused(), 'breadcrumb focus').to.be.true();
+
 				Page.button1.moveTo();
 				Page.waitTransitionEnd(5000, undefined, () => {
 					Page.spotlightSelect();
